@@ -107,8 +107,24 @@ var totalProfitOrLoss = new Intl.NumberFormat('en-GB', {
   currency: 'GBP',
 }).format(rawTotalProfitOrLoss);
 
+// 3. The average of the changes in Profit/Losses over the entire period
+var totalChange = profitOrLossArr[0];
+var changesArr = [profitOrLossArr[0]];
+for (var i = 0; i < profitOrLossArr.length - 1; i++) {
+  var change = profitOrLossArr[i + 1] - profitOrLossArr[i];
+  totalChange += change;
+  changesArr.push(change);
+}
+
+var rawAvgChange = totalChange / totalMonths;
+var avgChange = new Intl.NumberFormat('en-GB', {
+  style: 'currency',
+  currency: 'GBP',
+}).format(rawAvgChange);
+
 // Logged result
 console.log('Financial Analysis');
 console.log('----------------------------');
 console.log(`Total Months: ${totalMonths}`);
 console.log(`Total: ${totalProfitOrLoss}`);
+console.log(`Average Change: ${avgChange}`);
