@@ -131,6 +131,15 @@ var maxValue = new Intl.NumberFormat('en-GB', {
 var maxDate = monthsArr[changesArr.indexOf(rawMaxValue)];
 var max = `${maxDate} ${maxValue}`;
 
+//5. The greatest decrease in profits (date and amount) over the entire period
+var rawMinValue = Math.min(...changesArr);
+var minValue = new Intl.NumberFormat('en-GB', {
+  style: 'currency',
+  currency: 'GBP',
+}).format(rawMinValue);
+var minDate = monthsArr[changesArr.indexOf(rawMinValue)];
+var min = `${minDate} ${minValue}`;
+
 // Logged result
 console.log('Financial Analysis');
 console.log('----------------------------');
@@ -138,3 +147,4 @@ console.log(`Total Months: ${totalMonths}`);
 console.log(`Total: ${totalProfitOrLoss}`);
 console.log(`Average Change: ${avgChange}`);
 console.log(`Greatest Increase in Profits: ${max}`);
+console.log(`Greatest Decrease in Profits: ${min}`);
