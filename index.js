@@ -122,9 +122,19 @@ var avgChange = new Intl.NumberFormat('en-GB', {
   currency: 'GBP',
 }).format(rawAvgChange);
 
+// 4. The greatest increase in profits (date and amount) over the entire period
+var rawMaxValue = Math.max(...changesArr);
+var maxValue = new Intl.NumberFormat('en-GB', {
+  style: 'currency',
+  currency: 'GBP',
+}).format(rawMaxValue);
+var maxDate = monthsArr[changesArr.indexOf(rawMaxValue)];
+var max = `${maxDate} ${maxValue}`;
+
 // Logged result
 console.log('Financial Analysis');
 console.log('----------------------------');
 console.log(`Total Months: ${totalMonths}`);
 console.log(`Total: ${totalProfitOrLoss}`);
 console.log(`Average Change: ${avgChange}`);
+console.log(`Greatest Increase in Profits: ${max}`);
