@@ -97,7 +97,18 @@ var profitOrLossArr = finances.map((item) => item[1]);
 // 1. Total number of months
 var totalMonths = monthsArr.length;
 
+// 2. Net total amount of Profit/Loss over the entire period
+var rawTotalProfitOrLoss = 0;
+for (var i = 0; i < profitOrLossArr.length; i++) {
+  rawTotalProfitOrLoss += profitOrLossArr[i];
+}
+var totalProfitOrLoss = new Intl.NumberFormat('en-GB', {
+  style: 'currency',
+  currency: 'GBP',
+}).format(rawTotalProfitOrLoss);
+
 // Logged result
 console.log('Financial Analysis');
 console.log('----------------------------');
 console.log(`Total Months: ${totalMonths}`);
+console.log(`Total: ${totalProfitOrLoss}`);
