@@ -109,11 +109,11 @@ var totalProfitOrLoss = new Intl.NumberFormat('en-GB', {
 
 // 3. The average of the changes in Profit/Losses over the entire period
 var totalChange = profitOrLossArr[0];
-// var changesArr = [profitOrLossArr[0]];
+var changesArr = [profitOrLossArr[0]];
 for (var i = 0; i < profitOrLossArr.length - 1; i++) {
   var change = profitOrLossArr[i + 1] - profitOrLossArr[i];
   totalChange += change;
-  // changesArr.push(change);
+  changesArr.push(change);
 }
 
 var rawAvgChange = totalChange / totalMonths;
@@ -123,22 +123,22 @@ var avgChange = new Intl.NumberFormat('en-GB', {
 }).format(rawAvgChange);
 
 // 4. The greatest increase in profits (date and amount) over the entire period
-var rawMaxValue = Math.max(...profitOrLossArr);
+var rawMaxValue = Math.max(...changesArr);
 var maxValue = new Intl.NumberFormat('en-GB', {
   style: 'currency',
   currency: 'GBP',
 }).format(rawMaxValue);
-var maxDate = monthsArr[profitOrLossArr.indexOf(rawMaxValue)];
-var max = `${maxDate} ${maxValue}`;
+var maxDate = monthsArr[changesArr.indexOf(rawMaxValue)];
+var max = `${maxDate} (${maxValue})`;
 
 //5. The greatest decrease in profits (date and amount) over the entire period
-var rawMinValue = Math.min(...profitOrLossArr);
+var rawMinValue = Math.min(...changesArr);
 var minValue = new Intl.NumberFormat('en-GB', {
   style: 'currency',
   currency: 'GBP',
 }).format(rawMinValue);
-var minDate = monthsArr[profitOrLossArr.indexOf(rawMinValue)];
-var min = `${minDate} ${minValue}`;
+var minDate = monthsArr[changesArr.indexOf(rawMinValue)];
+var min = `${minDate} (${minValue})`;
 
 // Logged result
 console.log('Financial Analysis');
