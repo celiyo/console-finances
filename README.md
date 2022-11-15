@@ -29,5 +29,4 @@ Your task is to write JavaScript code that analyzes the records to calculate eac
 N/A
 
 ## License
-
-Please refer to the LICENSE in the repo.
+This project is open source and available under the [MIT License](LICENSE.md).
